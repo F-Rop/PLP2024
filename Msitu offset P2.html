@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Msitu Africa CO2 Emission Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('C:/Users/user/Downloads/still-life-sustainable-lifestyle-elements-composition.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+    }
+    form {
+        margin-top: 20px;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #33ff00;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .popup-img {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <img src="C:/Users/user/Downloads/Msitu_africa_auto_x2-removebg-preview.png" alt="Msitu Africa Logo" style="display: block; margin: 0 auto; width: 150px;">
+    <h1>Demo-Emissions Calculator</h1>
+    <h3>For Ride Hailing Apps(Mobility)</h3>
+    <h4>Input</h4>
+    <form id="calculatorForm">
+        <label for="distance">Distance (km):</label>
+        <input type="number" id="distance" name="distance" placeholder="Enter distance" required>
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+
+<!-- Popup image -->
+<img class="popup-img" src="C:/Users/user/Downloads/hands-cupping-plant-save-environment-campaign.jpg" alt="Popup Image">
+
+<script>
+document.getElementById('calculatorForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var distance = parseFloat(document.getElementById('distance').value);
+    var emissionsFactor = 120; // grams per kilometer
+    var emissionPrice = 2.8; // Ksh per kg
+    var cabFare = 50; // Ksh per km
+
+    var emissions = (distance * emissionsFactor) / 1000; // convert to kg
+    var totalOffsetCost = Math.ceil(emissions * emissionPrice); // Round off to the nearest greater value
+    var totalCabFare = cabFare * distance;
+    var totalCostPlusOffset = totalCabFare + totalOffsetCost;
+
+    var confirmation = confirm('Full cab fare: Ksh ' + totalCabFare.toFixed(2) + '\nCO2 emitted: ' + emissions.toFixed(2) + ' kg\nTotal cost of offsetting: Ksh ' + totalOffsetCost + '\nTotal cost + Co2 offset: Ksh ' + totalCostPlusOffset.toFixed(2) + '\n\nDo you accept to make the payment?');
+    if (confirmation) {
+        // Save the record and send it to the ride hailing app
+        alert('Record saved.');
+        alert('Congratulation on becoming an Eco-warrior Visit www.msituafrica.org')
+    }
+});
+</script>
+</body>
+</html>
